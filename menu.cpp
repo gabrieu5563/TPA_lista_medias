@@ -1,9 +1,11 @@
 #include<stdio.h>
+#include<stdlib.h>
 int main()
 {
-	int c, l, ex, rep;
+	int c, l, ex, rep, inserido;
 	float nota[4][3], menor[4][2];
 	rep=1;
+	inserido=0;
 	
 	do{
 		printf("1 - Preencher as notas\n");
@@ -22,6 +24,7 @@ int main()
 				break;
 				
 			case 1:
+				printf("\n");
 				 for (l = 0 ; l < 5; l++)
 		 		{
 		 			for (c = 0; c < 4; c++)
@@ -30,6 +33,12 @@ int main()
 		 				scanf("%f", &nota[l][c]);
 					}
 		 		}
+		 	
+		 		inserido = 1;
+		 	
+		 		printf("\nNotas adicionadas\n");
+				system("pause");
+				system("cls");
 		 	
 				break;
 				
@@ -45,7 +54,7 @@ int main()
 				nota[2][2]=0;
 				nota[3][0]=9;
 				nota[3][1]=4;
-				nota[3][2]=9;
+				nota[3][2]=0;
 				nota[4][0]=6.7;
 				nota[4][1]=3.5;
 				nota[4][2]=9.5;
@@ -68,72 +77,117 @@ int main()
 					nota[l][3] = (menor[l][0] + menor[l][1]) / 2;
 				}
 				
+				inserido = 1;
+				
+				printf("\nNotas adicionadas\n");
+				system("pause");
+				system("cls");
+				
 				break;
 				
 			case 3:
-				for(l = 0; l < 5; l++)
+				
+				if(inserido == 0)
 				{
-					if(nota[l][0] < nota[l][1] && nota[l][0] < nota[l][2]){
-						menor[l][0] = nota[l][1];
-						menor[l][1] = nota[l][2];
-					}else{
-						if(nota[l][1] < nota[l][2]){
-							menor[l][0] = nota[l][0];
-							menor[l][1] = nota[l][1];
-						}else{
+					printf("\nNenhuma nota inserida. Execute a opcao 1 ou 2 primeiro.\n");
+				} else {
+						for(l = 0; l < 5; l++)
+					{
+						if(nota[l][0] < nota[l][1] && nota[l][0] < nota[l][2]){
 							menor[l][0] = nota[l][1];
 							menor[l][1] = nota[l][2];
+						}else{
+							if(nota[l][1] < nota[l][2]){
+								menor[l][0] = nota[l][0];
+								menor[l][1] = nota[l][1];
+							}else{
+								menor[l][0] = nota[l][1];
+								menor[l][1] = nota[l][2];
+							}
 						}
+						
+						nota[l][3] = (menor[l][0] + menor[l][1]) / 2;
 					}
 					
-					nota[l][3] = (menor[l][0] + menor[l][1]) / 2;
-				}
+					printf("\nMedias calculadas\n");
+					}
+				
+				system("pause");
+				system("cls");
+				
 				break;
 				
 			case 4:
-				for (l = 0; l < 5; l++)
+				
+				if(inserido == 0)
 				{
-					printf("\n\nAluno: %d",l+1);
-					printf("\nNota 1: %.1f",nota[l][0]);
-					printf("\nNota 2: %.1f",nota[l][1]);
-					printf("\nNota 3: %.1f",nota[l][2]);
-					printf("\nMedia: %.1f",nota[l][3]);
+					printf("\nNenhuma nota inserida. Execute a opcao 1 ou 2 primeiro.\n");
+				} else{
+					for (l = 0; l < 5; l++)
+					{
+						printf("\n\nAluno: %d",l+1);
+						printf("\nNota 1: %.1f",nota[l][0]);
+						printf("\nNota 2: %.1f",nota[l][1]);
+						printf("\nNota 3: %.1f",nota[l][2]);
+						printf("\nMedia: %.1f\n",nota[l][3]);
+					}	
 				}
+				
+				system("pause");
+				system("cls");
 				break;
 				
 			case 5:
-				int medias, maior, alunomaior;
-				medias=(nota[0][3]+nota[1][3]+nota[2][3]+nota[3][3]+nota[4][3])/5;
-	
-				for (l = 0; l < 5; l++)
-				{
-					alunomaior = 0;
-					if(nota[l][3] > medias && alunomaior == 0)
-					{
-						maior++;
-						alunomaior++;
-					}
-				}
-				printf("%d alunos ficaram acima da media da sala.", maior);
-				break;
 				
-			case 6:
-				int zero, aluno0;
-				
-				for (l = 0; l < 5; l++)
+				if(inserido == 0)
 				{
-					aluno0 = 0;
-					
-					for(c = 0; c < 3; c++)
+					printf("\nNenhuma nota inserida. Execute a opcao 1 ou 2 primeiro.\n");
+				} else{
+					int medias, maior, alunomaior;
+					medias=(nota[0][3]+nota[1][3]+nota[2][3]+nota[3][3]+nota[4][3])/5;
+		
+					for (l = 0; l < 5; l++)
 					{
-						if(nota[l][c] < 0 && aluno0 == 0)
+						alunomaior = 0;
+						if(nota[l][3] > medias && alunomaior == 0)
 						{
-							zero++;
-							aluno0++;	
+							maior++;
+							alunomaior++;
 						}
 					}
+					printf("%d alunos ficaram acima da media da sala.\n", maior);	
 				}
-				printf("%d alunos tiveram pelo menos uma nota zero.", zero);
+				
+				system("pause");
+				system("cls");
+				break;
+				
+			case 6:                                     														//quebrado
+				
+				if(inserido == 0)
+				{
+					printf("\nNenhuma nota inserida. Execute a opcao 1 ou 2 primeiro.\n");
+				} else {
+					int zero, aluno0;
+				
+					for (l = 0; l < 5; l++)
+					{
+						aluno0 = 0;
+						
+						for(c = 0; c < 3; c++)
+						{
+							if(nota[l][c] < 0 && aluno0 == 0)
+							{
+								zero++;
+								aluno0++;	
+							}
+						}
+					}
+					printf("%d alunos tiveram pelo menos uma nota zero.\n", zero);	
+				}
+				
+				system("pause");
+				system("cls");
 							
 				break;
 				
