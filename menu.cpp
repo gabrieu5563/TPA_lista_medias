@@ -149,26 +149,27 @@ int main()
 				{
 					printf("\nNenhuma nota inserida. Execute a opcão 1 ou 2 primeiro.\n");
 				} else{
-					int medias, maior, alunomaior;
-					medias=(nota[0][3]+nota[1][3]+nota[2][3]+nota[3][3]+nota[4][3])/5;
+					int maior, alunomaior;
+					float mediasala;
+					mediasala=(media[0] + media[1] + media[2] + media[3] + media[4])/5;
 		
 					for (l = 0; l < 5; l++)
 					{
 						alunomaior = 0;
-						if(nota[l][3] > medias && alunomaior == 0)
+						if(media[l] > mediasala && alunomaior == 0)
 						{
 							maior++;
 							alunomaior++;
 						}
 					}
-					printf("%d alunos ficaram acima da média da sala.\n", maior);	
+					printf("%d alunos ficaram acima da média da sala (%.2f).\n", maior, mediasala);	
 				}
 				
 				system("pause");
 				system("cls");
 				break;
 				
-			case 6:                                     														//quebrado
+			case 6:
 				
 				if(inserido == 0)
 				{
