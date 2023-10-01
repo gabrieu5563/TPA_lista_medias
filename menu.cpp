@@ -29,6 +29,9 @@ int main()
 				break;
 				
 			case 1:
+				
+				float verifnota;
+				
 				if(inserido == 0)
 				{
 					printf("\n");
@@ -39,8 +42,16 @@ int main()
 			 			printf("\n\n");
 			 			for (c = 0; c < 3; c++)
 			 			{
-			 				printf("Nota %d: ", c + 1);
-			 				scanf("%f", &nota[l][c]);
+			 				do {
+                				printf("Nota %d: ", c + 1);
+                				scanf("%f", &verifnota);
+                				if (verifnota < 0 || verifnota > 10) {
+                    				printf("\nNota inválida. Digite uma nota entre 0 e 10.\n ");
+                				} else {
+                    				nota[l][c] = verifnota;
+                    				break;
+                				}
+            				} while (1);
 						}
 			 		}
 			 	
