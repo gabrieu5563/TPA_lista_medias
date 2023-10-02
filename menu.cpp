@@ -4,12 +4,12 @@
 
 int main()
 {
+	setlocale(LC_ALL, "");
+	
 	int c, l, ex, rep, inserido;
 	float nota[5][3], media[4];
 	rep=1;
 	inserido=0;
-	
-	setlocale(LC_ALL,"");
 	
 	do{
 		printf("1 - Preencher as notas\n");
@@ -38,6 +38,8 @@ int main()
 					 for (l = 0 ; l < 5; l++)
 			 		{
 			 			printf("\n");
+						printf(">-----------------------<");
+						printf("\n");
 			 			printf("Aluno %d", l + 1);
 			 			printf("\n\n");
 			 			for (c = 0; c < 3; c++)
@@ -59,7 +61,7 @@ int main()
 		 	
 		 			printf("\nNotas adicionadas\n");
 				} else {
-					printf("Notas ja foram inseridas. Execute as opções 3, 4, 5 ou 6.");
+					printf("Notas ja foram inseridas. Execute as opções 3, 4, 5 ou 6.\n");
 				}
 		 		
 				system("pause");
@@ -110,13 +112,10 @@ int main()
 					
 					for(l = 0; l < 5; l++)
 					{
-						//printf("\n");
 						float menor = nota[l][0];
 						menor = nota[l][1] < menor? nota[l][1]: menor;
 						menor = nota[l][2] < menor? nota[l][2]: menor;
-						//printf("\n menor = %f", menor);
 						media[l] = (nota[l][0] + nota[l][1] + nota[l][2] - menor) / 2;
-						//printf("\nmedia = %f", media[l]);
 					}
 					
 					printf("\nMédias calculadas\n");
@@ -137,6 +136,8 @@ int main()
 					
 					for(l = 0; l < 5; l++)
 					{
+						printf("\n");
+						printf(">-----------------------<");
 						printf("\n");
 						printf("Aluno %d", l + 1);
 						printf("\n\n");
@@ -186,7 +187,9 @@ int main()
 				{
 					printf("\nNenhuma nota inserida. Execute a opcão 1 ou 2 primeiro.\n");
 				} else {
+					
 					int zero, aluno0;
+					zero = 0;
 				
 					for (l = 0; l < 5; l++)
 					{
@@ -194,7 +197,7 @@ int main()
 						
 						for(c = 0; c < 3; c++)
 						{
-							if(nota[l][c] < 0 && aluno0 == 0)
+							if(nota[l][c] == 0 && aluno0 == 0)
 							{
 								zero++;
 								aluno0++;	
@@ -202,12 +205,19 @@ int main()
 						}
 					}
 					printf("%d alunos tiveram pelo menos uma nota zero.\n", zero);	
+					
 				}
 				
 				system("pause");
 				system("cls");
 							
 				break;
+			
+			default:
+				printf("Digite um valor entre 1 e 6.\n");
+				
+				system("pause");
+				system("cls");
 				
 		}
 	}while (rep == 1);
